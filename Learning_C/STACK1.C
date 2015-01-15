@@ -1,0 +1,99 @@
+#include<stdio.h>
+#include<alloc.h>
+struct student
+{
+ int marks;
+ struct student *next;  	//self referential pointer
+ }*p,*q,*start=NULL,*k;
+ //void push();
+ void creation();
+ void pop(struct student *start);
+ void push(struct student *start);
+ void display(struct student *start);
+ void main()
+ {
+  int i,j,a,v,m;
+  char x;
+  clrscr();
+  do
+  {
+   //printf("\nPress 1 for creation");
+   printf("\nPress 1 to push a node to stack");
+   printf("\nPress 2 to pop the nodes from stack");
+   printf("\nPress 3 to display nodes");
+   printf("\nEnter your choice: ");
+   fflush(stdin);
+   scanf("%d",&i);
+   switch(i)
+   {
+    case 1:
+	   creation();
+	   break;
+    case 2:
+	   printf("\nPopping the node from the stack...");
+	   pop(start);
+	   break;
+    case 3:
+	   printf("\nThe nodes are..");
+	   display(start);
+	   break;
+    default:
+	   printf("\nEnter a valid choice");
+	   break;
+    }
+    printf("\n\nIf you want to continue,press 'y': ");
+    fflush(stdin);
+    scanf("%c",&x);
+    }while(x=='y');
+    getch();
+  }
+
+ void creation()
+ {
+  printf("\nEnter the node: ");
+  p=(struct student*)malloc(sizeof(struct student));
+  scanf("%d",&p->marks);
+  p->next=NULL;
+  if(start==NULL)
+  start=p;
+  else
+  q->next=p;
+  q=p;
+
+  printf("\nPushing a node to the stack...");
+
+  printf("\n\nStarting address when pushing: %d",start);
+
+ }
+
+ void pop(struct student *start)
+ {
+  struct student *q;
+  printf("\n\nStarting address when popping: %d\n",start);
+
+  for(p=start;p->next!=NULL;p=p->next)
+  q=p;
+
+   //q=p->next;
+   free(p);
+   q->next=NULL;
+   display(start);
+   /*q=start;
+   while(q!=NULL)
+   {
+    printf("%d> ",q->marks);
+    q=q->next;
+   } */
+ }
+
+ void display(struct student *start)
+ {
+  printf("\n\nStarting address when displaying: %d\n",start);
+  p=start;
+  q==p;
+  while(p!=NULL)
+  {
+   printf("%d..",p->marks);
+   p=p->next;
+  }
+ }
